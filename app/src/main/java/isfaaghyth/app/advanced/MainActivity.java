@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import isfaaghyth.app.advanced.models.DataBean;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -31,12 +33,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        prosesData();
+        prosesObjekData();
     }
 
     @Override protected void onDestroy() {
         super.onDestroy();
         subscriber.unsubscribe();
+    }
+
+    private void prosesObjekData() {
+        DataBean identitas = new DataBean("Muh Isfahani", 19);
+        Observable<DataBean> dataku = Observable.just(identitas);
+
+        subscriber = dataku
+                 .observeOn(Schedulers.io())
+                 .subscribeOn(AndroidSchedulers.mainThread())
+                 .subscribe(new Action1<DataBean>() {
+                     @Override public void call(DataBean dataBean) {
+                         txtTest.setText(dataBean.getNama() + "\n" +
+                                         dataBean.getUmur());
+                     }
+                 });
     }
 
     private void prosesData() {
