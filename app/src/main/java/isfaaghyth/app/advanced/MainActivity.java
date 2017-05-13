@@ -48,10 +48,18 @@ public class MainActivity extends AppCompatActivity {
         subscriber = dataku
                  .observeOn(Schedulers.io())
                  .subscribeOn(AndroidSchedulers.mainThread())
-                 .subscribe(new Action1<DataBean>() {
-                     @Override public void call(DataBean dataBean) {
+                 .subscribe(new Observer<DataBean>() {
+                     @Override public void onCompleted() {
+
+                     }
+
+                     @Override public void onError(Throwable e) {
+
+                     }
+
+                     @Override public void onNext(DataBean dataBean) {
                          txtTest.setText(dataBean.getNama() + "\n" +
-                                         dataBean.getUmur());
+                                 dataBean.getUmur());
                      }
                  });
     }
