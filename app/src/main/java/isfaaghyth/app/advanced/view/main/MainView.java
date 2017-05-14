@@ -1,5 +1,7 @@
 package isfaaghyth.app.advanced.view.main;
 
+import isfaaghyth.app.advanced.models.main.MainModelImp;
+
 /**
  * ---------------------------------
  * Created by isfaaghyth with <3
@@ -8,6 +10,6 @@ package isfaaghyth.app.advanced.view.main;
  */
 
 public interface MainView {
-    void onSuccess(String result);
+    void onSuccess(MainModelImp result);
     void onError(Throwable err);
 }

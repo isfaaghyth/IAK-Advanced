@@ -1,5 +1,6 @@
 package isfaaghyth.app.advanced.presenter.main;
 
+import isfaaghyth.app.advanced.models.main.MainModelImp;
 import rx.Observable;
 
 /**
@@ -10,5 +11,5 @@ import rx.Observable;
  */
 
 public interface MainPresenter {
-    Observable<String> getResult();
+    Observable<MainModelImp> getResult();
 }
