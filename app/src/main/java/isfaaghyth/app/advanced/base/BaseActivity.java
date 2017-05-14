@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
-import isfaaghyth.app.advanced.MainActivity;
-import isfaaghyth.app.advanced.R;
+import rx.Subscription;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * ---------------------------------
@@ -17,6 +17,8 @@ import isfaaghyth.app.advanced.R;
 
 public class BaseActivity extends AppCompatActivity {
 
+    protected Subscription subscriber = new CompositeSubscription();
+
     protected void bind(int layout) {
         setContentView(layout);
         ButterKnife.bind(this);
@@ -26,4 +28,8 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
+    @Override protected void onDestroy() {
+        super.onDestroy();
+        subscriber.unsubscribe();
+    }
 }

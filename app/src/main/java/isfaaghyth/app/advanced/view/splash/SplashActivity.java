@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import isfaaghyth.app.advanced.MainActivity;
 import isfaaghyth.app.advanced.R;
 import isfaaghyth.app.advanced.base.BaseActivity;
 import isfaaghyth.app.advanced.presenter.splash.SplashPresenter;
 import isfaaghyth.app.advanced.presenter.splash.SplashPresenterImp;
+import isfaaghyth.app.advanced.view.main.MainActivity;
 
 public class SplashActivity extends BaseActivity implements SplashView {
 

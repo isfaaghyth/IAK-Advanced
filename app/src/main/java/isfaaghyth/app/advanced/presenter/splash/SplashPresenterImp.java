@@ -20,11 +20,9 @@ public class SplashPresenterImp implements SplashPresenter {
     }
 
     @Override public void waitSplash(int duration) {
-        new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                view.showAlert();
-                view.openMain();
-            }
+        new Handler().postDelayed(() -> {
+            view.showAlert();
+            view.openMain();
         }, duration);
     }
 }
